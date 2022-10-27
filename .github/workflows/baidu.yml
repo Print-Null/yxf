@@ -30,9 +30,10 @@ jobs:
         run: python -c "import sys; print(sys.version)"
       - name: Install requirement
         run: |
+          pwd
           python -m pip install --upgrade pip
-          python -m pip install -r ./yxf/requirement.txt
+          python -m pip install -r ./requirement.txt
       - name: Working
         run:
-          python ./yxf/run.py
+          python ./run.py
         
