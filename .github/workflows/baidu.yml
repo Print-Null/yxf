@@ -1,0 +1,38 @@
+# name指的是这套工作流程的名称，可以自定义
+name: baidu
+# on是指这套工作流程的触发条件，即在[push pull]时触发并且也能手动触发
+on: 
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  # 手动点击 started 触发
+  watch:
+    types: [started]
+# jobs就是这套工作流程了
+jobs:  
+  # build相当于<job_id>,可以自定义
+  build:
+    # 指定该job_id下的运行环境
+    runs-on: ubuntu-latest
+    # 制定运行步骤
+    steps:
+      # 步骤名称，可以自定义
+      - name: Checkout github code
+      # 先将仓库的代码checkout到环境中，github提供了checkout的方法，只需要我们加上这条即可
+        uses: actions/checkout@v3
+      # 设置python环境版本
+      - name: Set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.7
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+      - name: Install requirement
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r ./yxf/requirement.txt
+      - name: Working
+        run:
+          python ./yxf/run.py
+        
