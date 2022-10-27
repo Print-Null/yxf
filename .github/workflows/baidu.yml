@@ -34,5 +34,7 @@ jobs:
           python -m pip install -r ./requirements.txt
       - name: Working
         run:
+          sudo cp -p ./tools/chrome/chromedriver /usr/bin/
+          chmod -R 777 /usr/bin/chromedriver
           python ./run.py
         
