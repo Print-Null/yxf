@@ -39,4 +39,5 @@ jobs:
           sudo cp -p ./tools/chrome/chromedriver /usr/bin/
           chmod -R 777 /usr/bin/chromedriver
           python ./run.py
-        
+      - name: copy allure report
+        run: sudo cp -p ./allure-results/reports/index.html ./
