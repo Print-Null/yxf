@@ -34,10 +34,14 @@ jobs:
           python -m pip install -r ./requirements.txt
       - name: Working
         run: |
+          echo ${{ github.workspace }}
           chmod -R 777 ./tools/allure-2.19.0
           export PATH=./tools/allure-2.19.0/bin:$PATH
           sudo cp -p ./tools/chrome/chromedriver /usr/bin/
           chmod -R 777 /usr/bin/chromedriver
           python ./run.py
-      - name: copy allure report
-        run: sudo cp -p ./allure-results/reports/index.html ./
+      - name: download allure report
+        uses: actions/upload-artifact@v1
+        with:
+          name: allure-report
+          path: ./allure-results/reports/index.html
