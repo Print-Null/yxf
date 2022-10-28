@@ -38,8 +38,6 @@ jobs:
           export PATH=./tools/allure-2.19.0/bin:$PATH
           sudo cp -p ./tools/chrome/chromedriver /usr/bin/
           chmod -R 777 /usr/bin/chromedriver
-          java --version
-          allure --version
           python ./run.py
       - name: download allure report
         uses: actions/upload-artifact@v1
