@@ -35,11 +35,9 @@ jobs:
       - name: Working
         run: |
           chmod -R 777 ./tools/allure-2.19.0
-          ls -la ./tools/allure-2.19.0/bin
           export PATH=./tools/allure-2.19.0/bin:$PATH
           sudo cp -p ./tools/chrome/chromedriver /usr/bin/
           chmod -R 777 /usr/bin/chromedriver
-          echo $PATH
           java --version
           allure --version
           python ./run.py
